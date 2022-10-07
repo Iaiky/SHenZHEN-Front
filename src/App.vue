@@ -1,28 +1,66 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <router-view />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    #app {
+    font-family: 'Montserrat', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    }
+    .logo{
+            width: 100px;
+        }
+    .register, .login {
+        border-radius: 10px;
+        width: 300px;
+        box-shadow: 0 0 3px 0 rgba(0,0 , 0, 0.3);
+        padding: 20px;
+        margin: 8% auto 0;
+        text-align: center;
+    }
+    .register h1 ,.login h1 {
+        color: #000000;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+    .register input, .login input {
+        border-radius: 20px;
+        padding: 10px;
+        margin: 10px 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+        border: 1px solid #999;
+        outline: none;
+    }
+    .register button, .login button{
+        color: #fff;
+        width: 100%;
+        padding: 10px;
+        border-radius: 20px;
+        font-size: 15px;
+        margin: 10px 0;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+    .signUp-btn{
+        background-color: #1c8adb;
+    }
+    .login a, .register a, .content-table tbody td a{
+        text-decoration: none;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        color: #1c8adb;
+    }
 </style>
