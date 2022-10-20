@@ -1,34 +1,34 @@
 <template>
     <div>
         <HeaderComp />
-        <h1> Welcome to list of client page,</h1>
-        <h2>List of Clients</h2>
+        <h1> Welcome to categories list page</h1>
+        <h2>All Categories</h2>
         <table class="content-table">
             <thead>
                 <tr>
-                <td>id</td>
-                <td>Name</td>
-                <td>Last name</td>
-                <td>Address</td>
-                <td>N° tel</td>
-                <td>Actions</td>
-            </tr>
+                    <td>id</td>
+                    <td>Name</td>
+                    <td>Actions</td>
+                </tr>
             </thead>
             <tbody>
-                <tr v-for="item in client" :key="item.id">
-                    <td>{{item.idclient}}</td>
+                <tr v-for="item in types" :key="item.id">
+                    <td>{{item.idtype}}</td>
                     <td>{{item.name}}</td>
-                    <td>{{item.forename}}</td>
-                    <td>{{item.address}}</td>
-                    <td>{{item.tel}}</td>
                     <td>
-                        <router-link :to="'/updateClient/'+item.idclient" >Update</router-link>
-                        <button v-on:click="deleteClient(item.idclient)" >Delete</button>
+                        <router-link :to="'/updateType/'+item.idtype" >Update</router-link>
+                        <button v-on:click="deleteType(item.idtype)" >Delete</button>
                     </td>
                 </tr>
             </tbody>
-            
         </table>
+        <form class="addClient">
+            <div class="input-field">
+                <label>Name</label>
+                <input type="text" name="name" placeholder="new category name" v-model="type.name" /> 
+            </div>
+            <button type="button" v-on:click="addType" >Add categorie</button>
+        </form> 
     </div>
 </template>
 
@@ -36,18 +36,21 @@
     import HeaderComp from '../Header.vue'
     import axios from 'axios';
     export default{
-        name:'ListClientPage',
+        name:'CategorieType',
         data(){
             return {
-                client:[]
+                type:{
+                    name:''
+                },
+                types:[]
             }
         },
         components:{
             HeaderComp
         },
         methods:{
-            async deleteClient(id){
-                let result = await axios.delete("http://localhost:8000/api/client/"+id);
+            async deleteType(id){
+                let result = await axios.delete("http://localhost:8000/api/type/"+id);
                 console.warn(result);
                 if(result.status==200){
                     this.loadData();
@@ -58,8 +61,19 @@
                     if(!user){
                         this.$router.push({name:'SignUp'})
                     }
-                let result = await axios.get("http://localhost:8000/api/client/");
-                this.client = result.data.data;
+                let result = await axios.get("http://localhost:8000/api/type/");
+                this.types = result.data.data;         
+            },
+            async addType(){
+                var qs = require('qs');
+                let result = await axios.post("http://localhost:8000/api/type/",
+                    qs.stringify({
+                        name:this.type.name,
+                    })
+                );
+                console.warn(result);
+                // location.reload();
+                this.loadData();
             }
         },
         async mounted(){

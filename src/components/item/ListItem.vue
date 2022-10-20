@@ -1,33 +1,30 @@
 <template>
     <div>
         <HeaderComp />
-        <h1> Welcome to list of client page,</h1>
-        <h2>List of Clients</h2>
+        <h1> Welcome to list of Item page,</h1>
+        <h2>All Items</h2>
         <table class="content-table">
             <thead>
                 <tr>
                 <td>id</td>
                 <td>Name</td>
-                <td>Last name</td>
-                <td>Address</td>
-                <td>N° tel</td>
+                <td>categories</td>
+                <td>price</td>
                 <td>Actions</td>
             </tr>
             </thead>
             <tbody>
-                <tr v-for="item in client" :key="item.id">
-                    <td>{{item.idclient}}</td>
+                <tr v-for="item in items" :key="item.id">
+                    <td>{{item.idarticle}}</td>
                     <td>{{item.name}}</td>
-                    <td>{{item.forename}}</td>
-                    <td>{{item.address}}</td>
-                    <td>{{item.tel}}</td>
+                    <td>{{item.type}}</td>
+                    <td>{{item.price}}</td> 
                     <td>
-                        <router-link :to="'/updateClient/'+item.idclient" >Update</router-link>
-                        <button v-on:click="deleteClient(item.idclient)" >Delete</button>
+                        <router-link :to="'/updateItem/'+item.idarticle" >Update</router-link>
+                        <button v-on:click="deleteItem(item.idarticle)" >Delete</button>
                     </td>
                 </tr>
             </tbody>
-            
         </table>
     </div>
 </template>
@@ -36,18 +33,18 @@
     import HeaderComp from '../Header.vue'
     import axios from 'axios';
     export default{
-        name:'ListClientPage',
+        name:'ListItem',
         data(){
             return {
-                client:[]
+                items:[]
             }
         },
         components:{
             HeaderComp
         },
         methods:{
-            async deleteClient(id){
-                let result = await axios.delete("http://localhost:8000/api/client/"+id);
+            async deleteItem(id){
+                let result = await axios.delete("http://localhost:8000/api/item/"+id);
                 console.warn(result);
                 if(result.status==200){
                     this.loadData();
@@ -58,8 +55,8 @@
                     if(!user){
                         this.$router.push({name:'SignUp'})
                     }
-                let result = await axios.get("http://localhost:8000/api/client/");
-                this.client = result.data.data;
+                let result = await axios.get("http://localhost:8000/api/item/list");
+                this.items = result.data.data;         
             }
         },
         async mounted(){

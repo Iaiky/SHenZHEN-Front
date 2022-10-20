@@ -8,12 +8,30 @@
                     <div class="sub-menu-client">
                         <ul>
                             <li><router-link to="/ListClient">All</router-link></li>
-                            <li><router-link to="/addClient">Add</router-link></li>
+                            <li><router-link to="/addClient">Add clients</router-link></li>
                         </ul>
                     </div>
                 </li>
                 <li><a href="#">Command</a></li>
-                <li><a href="#">Items</a></li>
+                <li>
+                    <a href="#">Items</a>
+                    <div class="sub-menu-client">
+                        <ul>
+                            <li><router-link to="/ListItem">All items</router-link></li>
+                            <li><router-link to="/addItem">Add item</router-link></li>
+                            <li><router-link to="/Categorie">Categories</router-link></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Shipping</a>
+                    <div class="sub-menu-client">
+                        <ul>
+                            <li><router-link to="/ListShipping">Shipping list</router-link></li>
+                            <li><router-link to="/addShipping">Add new one</router-link></li>
+                        </ul>
+                    </div>
+                </li>
             </ul>    
         <a class="cta" v-on:click="logout" href="#"><button>Logout</button></a>
     </div>

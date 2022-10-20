@@ -1,29 +1,27 @@
 <template>
     <div>
         <HeaderComp />
-        <h1> Welcome to list of client page,</h1>
-        <h2>List of Clients</h2>
+        <h1> Welcome to shipping list page,</h1>
+        <h2>Shippings</h2>
         <table class="content-table">
             <thead>
                 <tr>
                 <td>id</td>
-                <td>Name</td>
-                <td>Last name</td>
-                <td>Address</td>
-                <td>N° tel</td>
+                <td>Sending date</td>
+                <td>Arrival date</td>
+                <td>N° container</td>
                 <td>Actions</td>
-            </tr>
+                </tr>
             </thead>
             <tbody>
-                <tr v-for="item in client" :key="item.id">
-                    <td>{{item.idclient}}</td>
-                    <td>{{item.name}}</td>
-                    <td>{{item.forename}}</td>
-                    <td>{{item.address}}</td>
-                    <td>{{item.tel}}</td>
+                <tr v-for="item in shipping" :key="item.id">
+                    <td>{{item.idshipping}}</td>
+                    <td>{{item.dateenvoi}}</td>
+                    <td>{{item.datearrive}}</td>
+                    <td>{{item.container}}</td>
                     <td>
-                        <router-link :to="'/updateClient/'+item.idclient" >Update</router-link>
-                        <button v-on:click="deleteClient(item.idclient)" >Delete</button>
+                        <router-link :to="'/updateShipping/'+item.idshipping" >Update</router-link>
+                        <button v-on:click="deleteShipping(item.idshipping)" >Delete</button>
                     </td>
                 </tr>
             </tbody>
@@ -36,18 +34,18 @@
     import HeaderComp from '../Header.vue'
     import axios from 'axios';
     export default{
-        name:'ListClientPage',
+        name:'ListShippingPage',
         data(){
             return {
-                client:[]
+                shipping:[]
             }
         },
         components:{
             HeaderComp
         },
         methods:{
-            async deleteClient(id){
-                let result = await axios.delete("http://localhost:8000/api/client/"+id);
+            async deleteShipping(id){
+                let result = await axios.delete("http://localhost:8000/api/shipping/"+id);
                 console.warn(result);
                 if(result.status==200){
                     this.loadData();
@@ -58,8 +56,8 @@
                     if(!user){
                         this.$router.push({name:'SignUp'})
                     }
-                let result = await axios.get("http://localhost:8000/api/client/");
-                this.client = result.data.data;
+                let result = await axios.get("http://localhost:8000/api/shipping/");
+                this.shipping = result.data.data;
             }
         },
         async mounted(){
