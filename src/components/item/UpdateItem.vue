@@ -1,7 +1,6 @@
 <template>
     <div>
         <HeaderComp />
-        <h1>Update Item page</h1>
         <form class="addClient">
             <div class="title">Update Item </div>
             <div class="input-field">
@@ -18,6 +17,7 @@
                 <label>Price</label>
                 <input type="number" name="price" placeholder="Enter item price" v-model="item.price" />
             </div>            
+            <router-link class="bk" to="/ListItem/">Back</router-link>
             <button type="button" v-on:click="updateItem" >Update item</button>
         </form>
     </div>

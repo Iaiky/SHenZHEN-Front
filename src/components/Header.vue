@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-        <img class="headerlogo" src="../assets/Logo-LK-Logistics-blanc.png" alt="logo"/>
+        <img class="headerlogo" src="../assets/Logo-LK-Logistics-blanc.png" alt="logo" v-on:click="redirectHome" />
             <ul class="nav_links">
                 <li><router-link to="/">Home</router-link></li>
                 <li>
@@ -12,7 +12,15 @@
                         </ul>
                     </div>
                 </li>
-                <li><a href="#">Command</a></li>
+                <li>
+                    <a href="#">Command</a>
+                    <div class="sub-menu-client">
+                        <ul>
+                            <li><router-link to="/ListCommand">History</router-link></li>
+                            <li><router-link to="/addCommand">Make command</router-link></li>
+                        </ul>
+                    </div>
+                </li>
                 <li>
                     <a href="#">Items</a>
                     <div class="sub-menu-client">
@@ -45,6 +53,9 @@
             logout(){
                 localStorage.clear();
                 this.$router.push({name:'Login'});
+            },
+            redirectHome(){
+                this.$router.push({name:'Home'})
             }
         }
     }

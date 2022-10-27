@@ -7,7 +7,8 @@
             <div class="input-field">
                 <label>Name</label>
                 <input type="text" name="name" placeholder="Enter name" v-model="type.name" /> 
-            </div>              
+            </div>          
+            <router-link class="bk" to="/Categorie">Back</router-link>
             <button type="button" v-on:click="updateType" >Update</button>
         </form>
     </div>

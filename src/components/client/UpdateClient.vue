@@ -1,26 +1,28 @@
 <template>
     <div>
         <HeaderComp />
-        <h1>Update client page</h1>
         <form class="addClient">
-            <div class="title">Add new client </div>
+            <div class="title">Update client informations </div>
             <div class="input-field">
-                <label>Name</label>
+                <label>Name :</label>
                 <input type="text" name="name" placeholder="Enter client name" v-model="client.name" />
             </div>   
             <div class="input-field">
-                <label>Last Name</label>
+                <label>Last Name :</label>
                 <input type="text" name="forename" placeholder="Enter client Last name" v-model="client.forename" />
             </div>
             <div class="input-field">
-                <label>Address</label>
+                <label>Address :</label>
                 <input type="text" name="address" placeholder="Enter client address" class="textarea" v-model="client.address" />
             </div>
             <div class="input-field">
-                <label>Phone number</label>
+                <label>Phone number :</label>
                 <input type="text" name="tel" placeholder="Enter client phone number" v-model="client.tel" />
-            </div>           
-            <button type="button" v-on:click="updateClient" >Update</button>
+            </div>   
+            <div class="button-list">
+                <router-link class="bk" to="/ListClient/">Back</router-link>
+                <button type="button" v-on:click="updateClient" >Update</button>
+            </div>             
         </form>
     </div>
 </template>
@@ -31,11 +33,12 @@
     export default{
         name:'UpdateClient',
         components:{
-            HeaderComp
+            HeaderComp,
         },
         data() {
             return {
                 client :{
+                    idclient :'',
                     name :'',
                     forename:'',
                     address:'',

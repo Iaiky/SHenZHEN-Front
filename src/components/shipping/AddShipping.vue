@@ -1,9 +1,8 @@
 <template>
     <div>
         <HeaderComp />
-        <h1>Add Client page</h1>
         <form class="addClient">
-            <div class="title">Add new client </div>
+            <div class="title">Add shipping </div>
             <div class="input-field">
                 <label>Sending date :</label>
                 <input type="date" name="dateenvoi" placeholder="Sending date of items" v-model="shipping.dateenvoi" />
@@ -14,9 +13,10 @@
             </div>
             <div class="input-field">
                 <label>N° Container :</label>
-                <input type="text" name="container" placeholder="conatiner number" v-model="shipping.container" />
+                <input type="text" name="container" placeholder="container number" v-model="shipping.container" />
             </div>           
             <button type="button" v-on:click="addShipping" >Add</button>
+            <router-link class="bk" to="/">Home</router-link>
         </form>
     </div>
 </template>

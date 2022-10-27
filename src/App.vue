@@ -63,4 +63,18 @@ export default {
         font-size: 16px;
         color: #1c8adb;
     }
+    .bk {
+        text-decoration: none;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        color: #1c8adb;
+        transition: all 0.3s ease 0s;
+    }
+
+    .bk:hover {
+        color: #93d4e4;
+    }
+
+ 
 </style>

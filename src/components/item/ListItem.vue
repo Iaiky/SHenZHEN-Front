@@ -1,8 +1,7 @@
 <template>
     <div>
-        <HeaderComp />
-        <h1> Welcome to list of Item page,</h1>
-        <h2>All Items</h2>
+        <HeaderComp /><br/>
+        <h1> All items</h1>
         <table class="content-table">
             <thead>
                 <tr>
@@ -10,19 +9,14 @@
                 <td>Name</td>
                 <td>categories</td>
                 <td>price</td>
-                <td>Actions</td>
             </tr>
             </thead>
             <tbody>
-                <tr v-for="item in items" :key="item.id">
+                <tr v-for="item in items" :key="item.id" v-on:click="itemPage(item.idarticle)">
                     <td>{{item.idarticle}}</td>
                     <td>{{item.name}}</td>
                     <td>{{item.type}}</td>
                     <td>{{item.price}}</td> 
-                    <td>
-                        <router-link :to="'/updateItem/'+item.idarticle" >Update</router-link>
-                        <button v-on:click="deleteItem(item.idarticle)" >Delete</button>
-                    </td>
                 </tr>
             </tbody>
         </table>
@@ -43,13 +37,6 @@
             HeaderComp
         },
         methods:{
-            async deleteItem(id){
-                let result = await axios.delete("http://localhost:8000/api/item/"+id);
-                console.warn(result);
-                if(result.status==200){
-                    this.loadData();
-                }
-            },
             async loadData(){
                 let user = localStorage.getItem('user-info');
                     if(!user){
@@ -57,6 +44,13 @@
                     }
                 let result = await axios.get("http://localhost:8000/api/item/list");
                 this.items = result.data.data;         
+            },
+            itemPage(id){
+                let user = localStorage.getItem('user-info');
+                    if(!user){
+                        this.$router.push({name:'SignUp'})
+                    }
+                    this.$router.push({path: "/ItemPage/"+id})
             }
         },
         async mounted(){

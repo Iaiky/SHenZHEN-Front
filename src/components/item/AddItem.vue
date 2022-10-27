@@ -1,24 +1,24 @@
 <template>
     <div>
         <HeaderComp />
-        <h1>Add item page</h1>
         <form class="addClient">
             <div class="title">Add new item </div>
             <div class="input-field">
-                <label>Name</label>
-                <input type="text" name="name" placeholder="Enter item name" v-model="item.name" /> 
+                <label>Name :</label>
+                <input type="text" name="name" placeholder="item name" v-model="item.name" /> 
             </div> 
             <div class="input-field">
-                <label>Categories</label>
+                <label>Categories :</label>
                 <select name="type" v-model="item.type">
                     <option v-for="item in type" :key="item.id" :value="item.idtype">{{item.name}}</option>
                 </select>
             </div>
             <div class="input-field">
-                <label>Price</label>
-                <input type="number" name="price" placeholder="Enter item price" v-model="item.price" />
+                <label>Price :</label>
+                <input type="number" name="price" placeholder="item price" v-model="item.price" />
             </div> 
             <button type="button" v-on:click="addItem" >Add item</button>
+            <router-link class="bk" to="/">Home</router-link>
         </form>
     </div>
 </template>

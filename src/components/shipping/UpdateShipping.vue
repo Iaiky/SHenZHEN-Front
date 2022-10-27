@@ -1,7 +1,6 @@
 <template>
     <div>
         <HeaderComp />
-        <h1>Update Shipping page</h1>
         <form class="addClient">
             <div class="title">Update shipping</div>
             <div class="input-field">
@@ -15,7 +14,8 @@
             <div class="input-field">
                 <label>N° Container :</label>
                 <input type="text" name="container" placeholder="conatiner number" v-model="shipping.container" />
-            </div>           
+            </div>      
+            <router-link class="bk" to="/ListShipping/">Back</router-link>     
             <button type="button" v-on:click="updateShipping" >Update</button>
         </form>
     </div>

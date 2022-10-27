@@ -6,10 +6,14 @@ import LoginPage from "./components/Login.vue";
 import AddClient from "./components/client/AddClient.vue";
 import UpdateClient from "./components/client/UpdateClient.vue";
 import ListClient from "./components/client/ListClient.vue";
+import ClientPage from "./components/client/ClientPage.vue";
+import ListCommandClient from "./components/client/ListCommandClient.vue";
 //Item
 import AddItem from "./components/item/AddItem.vue";
 import ListItem from "./components/item/ListItem.vue";
 import UpdateItem from "./components/item/UpdateItem.vue";
+import ItemPage from "./components/item/ItemPage.vue";
+import ListCommandItem from "./components/item/ListCommandItem.vue";
 //categorie type
 import UpdateType from "./components/item/UpdateType.vue";
 import Categorie from "./components/item/Categorie.vue";
@@ -17,6 +21,13 @@ import Categorie from "./components/item/Categorie.vue";
 import AddShipping from "./components/shipping/AddShipping.vue";
 import ListShipping from "./components/shipping/ListShipping.vue";
 import UpdateShipping from "./components/shipping/UpdateShipping.vue";
+import ShippingPage from "./components/shipping/ShippingPage.vue";
+import ListCommandShipping from "./components/shipping/ListCommandShipping.vue";
+//command
+import AddCommand from "./components/command/AddCommand.vue";
+import UpdateCommand from "./components/command/UpdateCommand.vue";
+import ListCommand from "./components/command/ListCommand.vue";
+import CommandPage from "./components/command/CommandPage.vue";
 import { createRouter, createWebHistory} from "vue-router";
 
 
@@ -55,6 +66,16 @@ const routes = [
         component: ListClient,
         path: "/ListClient"
     },
+    {
+        name: "ClientPage",
+        component: ClientPage,
+        path: "/ClientPage/:idclient"
+    },
+    {
+        name: "ListCommandClient",
+        component: ListCommandClient,
+        path: "/ListCommandClient/:idclient"
+    },
 
     //Item
     {
@@ -71,6 +92,16 @@ const routes = [
         name: "UpdateItem",
         component: UpdateItem,
         path: "/updateItem/:idItem"
+    },
+    {
+        name: "ItemPage",
+        component: ItemPage,
+        path: "/ItemPage/:idItem"
+    },
+    {
+        name: "ListCommandItem",
+        component: ListCommandItem,
+        path: "/ListCommandItem/:idItem"
     },
 
     //Type
@@ -100,6 +131,38 @@ const routes = [
         name: "ListShipping",
         component: ListShipping,
         path: "/ListShipping"
+    },
+    {
+        name: "ShippingPage",
+        component: ShippingPage,
+        path: "/ShippingPage/:idshipping"
+    },
+    {
+        name: "ListCommandShipping",
+        component: ListCommandShipping,
+        path: "/ListCommandShipping/:idshipping"
+    },
+
+    //command
+    {
+        name: "AddCommand",
+        component: AddCommand,
+        path: "/addCommand"
+    },
+    {
+        name: "UpdateCommand",
+        component: UpdateCommand,
+        path: "/updateCommand/:idcommand"
+    },
+    {
+        name: "ListCommand",
+        component: ListCommand,
+        path: "/ListCommand"
+    },
+    {
+        name: "CommandPage",
+        component: CommandPage,
+        path: "/CommandPage/:idcommand"
     }
 ];
 

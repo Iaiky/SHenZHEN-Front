@@ -1,26 +1,26 @@
 <template>
     <div>
         <HeaderComp />
-        <h1>Add Client page</h1>
         <form class="addClient">
             <div class="title">Add new client </div>
             <div class="input-field">
-                <label>Name</label>
-                <input type="text" name="name" placeholder="Enter client name" v-model="client.name" />
+                <label>Name :</label>
+                <input type="text" name="name" placeholder="name" v-model="client.name" />
             </div>   
             <div class="input-field">
-                <label>Last Name</label>
-                <input type="text" name="forename" placeholder="Enter client Last name" v-model="client.forename" />
+                <label>Last Name :</label>
+                <input type="text" name="forename" placeholder="Last name" v-model="client.forename" />
             </div>
             <div class="input-field">
-                <label>Address</label>
-                <input type="text" name="address" placeholder="Enter client address" class="textarea" v-model="client.address" />
+                <label>Address :</label>
+                <input type="text" name="address" placeholder="address" class="textarea" v-model="client.address" />
             </div>
             <div class="input-field">
-                <label>Phone number</label>
-                <input type="text" name="tel" placeholder="Enter client phone number" v-model="client.tel" />
+                <label>Phone number :</label>
+                <input type="text" name="tel" placeholder="phone number" v-model="client.tel" />
             </div>           
             <button type="button" v-on:click="addClient" >Add client</button>
+            <router-link class="bk" to="/">Home</router-link>
         </form>
     </div>
 </template>
@@ -125,5 +125,18 @@
         border: none;
         outline: none;
         cursor: pointer;
+    }
+
+    .bk {
+        text-decoration: none;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        color: #1c8adb;
+        transition: all 0.3s ease 0s;
+    }
+
+    .bk:hover {
+        color: #93d4e4;
     }
 </style>

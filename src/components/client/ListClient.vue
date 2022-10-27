@@ -1,8 +1,8 @@
 <template>
     <div>
         <HeaderComp />
-        <h1> Welcome to list of client page,</h1>
-        <h2>List of Clients</h2>
+        <br/>
+        <h1>List of Clients</h1>
         <table class="content-table">
             <thead>
                 <tr>
@@ -11,23 +11,17 @@
                 <td>Last name</td>
                 <td>Address</td>
                 <td>N° tel</td>
-                <td>Actions</td>
             </tr>
             </thead>
             <tbody>
-                <tr v-for="item in client" :key="item.id">
+                <tr v-for="item in client" :key="item.id" v-on:click="clientPage(item.idclient)">
                     <td>{{item.idclient}}</td>
                     <td>{{item.name}}</td>
                     <td>{{item.forename}}</td>
                     <td>{{item.address}}</td>
                     <td>{{item.tel}}</td>
-                    <td>
-                        <router-link :to="'/updateClient/'+item.idclient" >Update</router-link>
-                        <button v-on:click="deleteClient(item.idclient)" >Delete</button>
-                    </td>
                 </tr>
-            </tbody>
-            
+            </tbody>    
         </table>
     </div>
 </template>
@@ -46,13 +40,6 @@
             HeaderComp
         },
         methods:{
-            async deleteClient(id){
-                let result = await axios.delete("http://localhost:8000/api/client/"+id);
-                console.warn(result);
-                if(result.status==200){
-                    this.loadData();
-                }
-            },
             async loadData(){
                 let user = localStorage.getItem('user-info');
                     if(!user){
@@ -60,6 +47,13 @@
                     }
                 let result = await axios.get("http://localhost:8000/api/client/");
                 this.client = result.data.data;
+            },
+            clientPage(id){
+                let user = localStorage.getItem('user-info');
+                    if(!user){
+                        this.$router.push({name:'SignUp'})
+                    }
+                    this.$router.push({path: "/ClientPage/"+id})
             }
         },
         async mounted(){
@@ -107,6 +101,7 @@
     .content-table tbody tr:hover {
         font-weight: bold;
         color: #1c8adb;
+        cursor: pointer;
     }
 
     .content-table tbody tr td button {
