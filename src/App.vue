@@ -16,6 +16,14 @@ export default {
     text-align: center;
     color: #2c3e50;
     }
+    *{
+        margin: 0;
+        padding: 0;
+        outline: none;
+        border: none;
+        text-decoration: none;
+        box-sizing: border-box;
+    }
     .logo{
             width: 100px;
         }

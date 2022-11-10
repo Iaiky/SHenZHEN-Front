@@ -1,6 +1,9 @@
 <template>
     <div>
         <HeaderComp />
+        <div v-if="usertype">
+            <SideBarComp />
+        </div>
         <div class="addClient">
             <div class="title">Client informations</div>
             <div class="input-field">
@@ -39,12 +42,14 @@
 
 <script>
     import HeaderComp from '../Header.vue'
+    import SideBarComp from '../Sidebar.vue'
     import axios from 'axios';
     import GoBack from '../GoBack.vue'
     export default{
         name:'ClientPage',
         components:{
             HeaderComp,
+            SideBarComp,
             GoBack
         },
         data() {
@@ -56,7 +61,8 @@
                     address:'',
                     tel:''
                 },
-                numbercommand:''
+                numbercommand:'',
+                usertype:''
             }
         },
         methods:{
@@ -84,6 +90,7 @@
         },
         async mounted(){
             let user = localStorage.getItem('user-info');
+            this.usertype= JSON.parse(user)[0].usertype;
             if(!user){
                 this.$router.push({name:'SignUp'})
             }

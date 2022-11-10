@@ -1,6 +1,9 @@
 <template>
     <div>
         <HeaderComp />
+        <div v-if="usertype">
+            <SideBarComp />
+        </div>
         <div class="addClient">
             <div class="title">Item </div>
             <div class="input-field">
@@ -35,13 +38,15 @@
 
 <script>
     import HeaderComp from '../Header.vue'
+    import SideBarComp from '../Sidebar.vue'
     import axios from 'axios';
     import GoBack from '../GoBack.vue'
     export default{
         name:'ItemPage',
         components:{
             HeaderComp,
-            GoBack
+            GoBack,
+            SideBarComp
         },
         data() {
             return {
@@ -51,7 +56,8 @@
                     type:'',
                     price:''
                 },
-                numbercommand:''
+                numbercommand:'',
+                usertype:''
             }
         },
         methods:{
@@ -79,6 +85,7 @@
         },
         async mounted(){
             let user = localStorage.getItem('user-info');
+            this.usertype= JSON.parse(user)[0].usertype;
             if(!user){
                 this.$router.push({name:'SignUp'})
             }

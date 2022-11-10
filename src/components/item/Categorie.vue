@@ -1,6 +1,9 @@
 <template>
     <div>
         <HeaderComp />
+        <div v-if="usertype">
+            <SideBarComp />
+        </div>
         <h1> Welcome to categories list page</h1>
         <h2>All Categories</h2>
         <table class="content-table">
@@ -35,6 +38,7 @@
 <script>
     import HeaderComp from '../Header.vue'
     import axios from 'axios';
+    import SideBarComp from '../Sidebar.vue'
     export default{
         name:'CategorieType',
         data(){
@@ -42,11 +46,13 @@
                 type:{
                     name:''
                 },
-                types:[]
+                types:[],
+                usertype:''
             }
         },
         components:{
-            HeaderComp
+            HeaderComp,
+            SideBarComp
         },
         methods:{
             async deleteType(id){
@@ -58,6 +64,7 @@
             },
             async loadData(){
                 let user = localStorage.getItem('user-info');
+                this.usertype= JSON.parse(user)[0].usertype;
                     if(!user){
                         this.$router.push({name:'SignUp'})
                     }

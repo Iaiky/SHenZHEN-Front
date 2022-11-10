@@ -3,11 +3,16 @@
         <div class="register">
             <img class="logo" src="../assets/Logo-LK-Logistics.png"/>
             <h1>Sign Up</h1>
-            <input type="text" v-model="name" placeholder="Enter Name"/>
-            <input type="text" v-model="email" placeholder="Enter Email"/>
-            <input type="Password" v-model="password" placeholder="Enter Password"/>
+            <input type="text" v-model="name" placeholder="Name"/>
+            <input type="email" v-model="email" placeholder="Email"/>
+            <input type="Password" v-model="password" placeholder="Password"/>
+            usertype
+            <select name="type" v-model="usertype">
+                    <option value="superadmin">Superadmin</option>
+                    <option value="admin">Admin</option>
+            </select>
             <button v-on:click="signUp" class="signUp-btn">Sign Up</button>
-            <p>Do you have an account? <router-link to="/login">Login</router-link></p>
+            <p>Do you have an account? <router-link to="/login">Log in</router-link></p>
         </div>
     </div>  
 </template>
@@ -20,7 +25,8 @@
             return {
                 name:'',
                 email:'',
-                password:''
+                password:'',
+                usertype:''
             }
         },
         methods : {
@@ -30,21 +36,15 @@
                     qs.stringify({
                         name:this.name,
                         email:this.email,
-                        password:this.password
+                        password:this.password,
+                        usertype:this.usertype
                     })
                 );
 
                 console.warn(result);
                 if(result.status==200){
-                    localStorage.setItem("user-info",JSON.stringify(result.data.data))
-                    this.$router.push({name:'Home'})
+                    this.$router.push({name:'Login'})
                 }
-            }
-        },
-        mounted(){
-            let user = localStorage.getItem('user-info');
-            if(user){
-                this.$router.push({name:'Home'})
             }
         }
     }

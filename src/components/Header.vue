@@ -2,9 +2,9 @@
     <div class="header">
         <img class="headerlogo" src="../assets/Logo-LK-Logistics-blanc.png" alt="logo" v-on:click="redirectHome" />
             <ul class="nav_links">
-                <li><router-link to="/">Home</router-link></li>
+                <li><router-link to="/"><i class="fa fa-home"></i> Home</router-link></li>
                 <li>
-                    <a href="#">Client</a>
+                    <a href="#"> <i class="	fa fa-users"></i> Client</a>
                     <div class="sub-menu-client">
                         <ul>
                             <li><router-link to="/ListClient">All</router-link></li>
@@ -13,7 +13,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#">Command</a>
+                    <a href="#"><i class="fa fa-list"></i> Command</a>
                     <div class="sub-menu-client">
                         <ul>
                             <li><router-link to="/ListCommand">History</router-link></li>
@@ -22,7 +22,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#">Items</a>
+                    <a href="#"><i class="fa fa-product-hunt"></i> Items</a>
                     <div class="sub-menu-client">
                         <ul>
                             <li><router-link to="/ListItem">All items</router-link></li>
@@ -32,7 +32,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#">Shipping</a>
+                    <a href="#"><i class="fa fa-ship"></i> Shipping</a>
                     <div class="sub-menu-client">
                         <ul>
                             <li><router-link to="/ListShipping">Shipping list</router-link></li>
@@ -41,7 +41,7 @@
                     </div>
                 </li>
             </ul>    
-        <a class="cta" v-on:click="logout" href="#"><button>Logout</button></a>
+        <a class="cta" v-on:click="logout" href="#"><button><i class="fa fa-sign-out"></i> Log out</button></a>
     </div>
     
 </template>

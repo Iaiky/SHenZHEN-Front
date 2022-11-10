@@ -1,6 +1,9 @@
 <template>
     <div>
         <HeaderComp />
+        <div v-if="usertype">
+            <SideBarComp />
+        </div>
         <div class="home">
             <div>
                 <img class="homelogo" src="../assets/Logo-LK-Logistics.png" alt="logo" />
@@ -23,13 +26,13 @@
 
 <script>
     import HeaderComp from './Header.vue'
-    import axios from 'axios';
+    import SideBarComp from './Sidebar.vue'
     export default{
         name:'HomePage',
         data(){
             return {
                 name:'',
-                client:[],
+                usertype:''
             }
         },
         methods:{
@@ -47,17 +50,16 @@
             }
         },
         components:{
-            HeaderComp
+            HeaderComp,
+            SideBarComp
         },
         async mounted(){
             let user = localStorage.getItem('user-info');
             this.name= JSON.parse(user)[0].name;
+            this.usertype= JSON.parse(user)[0].usertype;
             if(!user){
                 this.$router.push({name:'SignUp'})
             }
-            let result = await axios.get("http://localhost:8000/api/client/");
-            console.warn(result)
-            this.client = result.data.data;
         }
     }
 </script>

@@ -1,6 +1,9 @@
 <template>
     <div>
         <HeaderComp />
+        <div v-if="usertype">
+            <SideBarComp />
+        </div>
         <h1> List of command :</h1>
         <table class="content-table">
             <thead>
@@ -40,20 +43,24 @@
 
 <script>
     import HeaderComp from '../Header.vue'
+    import SideBarComp from '../Sidebar.vue'
     import axios from 'axios';
     export default{
         name:'ListCommandItem',
         data(){
             return {
-                command:[]
+                command:[],
+                usertype:''
             }
         },
         components:{
-            HeaderComp
+            HeaderComp,
+            SideBarComp
         },
         methods:{
             async loadData(){
                 let user = localStorage.getItem('user-info');
+                this.usertype= JSON.parse(user)[0].usertype;
                     if(!user){
                         this.$router.push({name:'SignUp'})
                     }
@@ -78,6 +85,7 @@
     .content-table{
         border-collapse: collapse;
         margin: 25px 0;
+        margin-left: 100px;
         font-size: 0.9em;
         min-width: 500px;
         border-radius: 5px 5px 0 0;

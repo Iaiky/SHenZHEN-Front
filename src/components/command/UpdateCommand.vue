@@ -1,6 +1,9 @@
 <template>
     <div>
         <HeaderComp />
+        <div v-if="usertype">
+            <SideBarComp />
+        </div>
         <form class="addClient">
             <div class="title">Add new command </div>
             <div>
@@ -31,13 +34,15 @@
 
 <script>
     import HeaderComp from '../Header.vue'
+    import SideBarComp from '../Sidebar.vue'
     import axios from 'axios';
     import vSelect from 'vue-select'
     export default{
         name:'UpdateCommand',
         components:{
             HeaderComp,
-            vSelect
+            vSelect,
+            SideBarComp
         },
         data() {
             return {
@@ -51,7 +56,8 @@
                     quantity:'',
                     statut: 0,
                     iduser:''
-                }
+                },
+                usertype:''
             }
         },
         methods:{
@@ -74,6 +80,7 @@
             },
             async loadData(){
                 let user = localStorage.getItem('user-info');
+                this.usertype= JSON.parse(user)[0].usertype;
                 this.command.iduser= JSON.parse(user)[0].id;
                     if(!user){
                         this.$router.push({name:'SignUp'})

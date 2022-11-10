@@ -1,6 +1,9 @@
 <template>
     <div>
-        <HeaderComp /><br/>
+        <HeaderComp />
+        <div v-if="usertype">
+            <SideBarComp />
+        </div><br/>
         <h1> All items</h1>
         <table class="content-table">
             <thead>
@@ -25,20 +28,24 @@
 
 <script>
     import HeaderComp from '../Header.vue'
+    import SideBarComp from '../Sidebar.vue'
     import axios from 'axios';
     export default{
         name:'ListItem',
         data(){
             return {
-                items:[]
+                items:[],
+                usertype:''
             }
         },
         components:{
-            HeaderComp
+            HeaderComp,
+            SideBarComp
         },
         methods:{
             async loadData(){
                 let user = localStorage.getItem('user-info');
+                this.usertype= JSON.parse(user)[0].usertype;
                     if(!user){
                         this.$router.push({name:'SignUp'})
                     }
