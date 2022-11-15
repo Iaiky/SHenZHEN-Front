@@ -2,6 +2,12 @@
 import HomePage from "./components/Home.vue";
 import SignUp from "./components/SignUp.vue";
 import LoginPage from "./components/Login.vue";
+//users
+import ListUser from "./components/user/ListUser.vue";
+import ListPendingUser from "./components/user/ListPendingUser.vue";
+import UserPage from "./components/user/UserPage.vue";
+import ListCommandUser from "./components/user/ListCommandUser.vue";
+import UpdateUser from "./components/user/UpdateUser.vue";
 //client
 import AddClient from "./components/client/AddClient.vue";
 import UpdateClient from "./components/client/UpdateClient.vue";
@@ -48,6 +54,33 @@ const routes = [
         name: "Login",
         component: LoginPage,
         path: "/login"
+    },
+
+    //User
+    {
+        name: "ListUser",
+        component: ListUser,
+        path: "/ListUser"
+    },
+    {
+        name: "ListPendingUser",
+        component: ListPendingUser,
+        path: "/ListPendingUser"
+    },
+    {
+        name: "UserPage",
+        component: UserPage,
+        path: "/UserPage/:iduser"
+    },
+    {
+        name: "ListCommandUser",
+        component: ListCommandUser,
+        path: "/ListCommandUser/:iduser"
+    },
+    {
+        name: "UpdateUser",
+        component: UpdateUser,
+        path: "/updateUser/:iduser"
     },
 
     //client

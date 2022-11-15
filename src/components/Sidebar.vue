@@ -9,7 +9,7 @@
                     </router-link>
                 </li>
                 <li class="liste">
-                    <router-link to="#">
+                    <router-link to="/ListUser">
                         <i class="fa fa-user-circle-o"></i>
                         <span class="nav-item">
                             User
@@ -17,7 +17,7 @@
                     </router-link>
                 </li>
                 <li class="liste">
-                    <router-link to="#">
+                    <router-link to="/ListPendingUser">
                         <i class="fa fa-user-plus"></i>
                         <span class="nav-item">
                             Pending user
